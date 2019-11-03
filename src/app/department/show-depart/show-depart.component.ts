@@ -5,6 +5,7 @@ import {DepartmentService} from '../../service/department.service';
 import { MatDialog, MatDialogConfig} from '@angular/material';
 import { AddDepartComponent} from '../add-depart/add-depart.component';
 import { MatSnackBar} from '@angular/material';
+import {EditDepartComponent} from '../edit-depart/edit-depart.component';
 
 @Component({
   selector: 'app-show-depart',
@@ -29,7 +30,12 @@ export class ShowDepartComponent implements OnInit {
   }
 
   onEdit(dep: Department) {
-    console.log(dep);
+    this.departmentService.formData = dep;
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '70%';
+    this.dialog.open(EditDepartComponent,  dialogConfig);
   }
   refreshDepList() {
    this.departmentService.getDepartmentList().subscribe(data => {
