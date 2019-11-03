@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -14,6 +15,10 @@ import { AddEmpComponent } from './employee/add-emp/add-emp.component';
 import { ShowDepartComponent } from './department/show-depart/show-depart.component';
 import { EditDepartComponent } from './department/edit-depart/edit-depart.component';
 import { AddDepartComponent } from './department/add-depart/add-depart.component';
+import {DepartmentService} from './service/department.service';
+import {EmployeeService} from './service/employee.service';
+import {MatButtonModule, MatDialogModule, MatIconModule, MatSortModule, MatTableModule} from '@angular/material';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,8 +38,17 @@ import { AddDepartComponent } from './department/add-depart/add-depart.component
     BrowserAnimationsModule,
     MatSliderModule,
     MatInputModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    HttpClientModule,
+    MatSortModule,
+    MatDialogModule,
+    FormsModule,
+
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [DepartmentService, EmployeeService],
+  bootstrap: [AppComponent],
+  entryComponents: [AddDepartComponent]
 })
 export class AppModule { }
