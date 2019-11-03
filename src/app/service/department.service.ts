@@ -21,6 +21,10 @@ export class DepartmentService {
     return this.httpClient.post(`${this.apiUrl}/departments/`, department);
   }
 
+  deleteDepartment(depId: number)  {
+    return this.httpClient.delete(`${this.apiUrl}/departments/${depId}`);
+  }
+
   listen(): Observable<any> {
     return this.listener.asObservable();
   }
