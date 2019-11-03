@@ -10,13 +10,22 @@ import {Department} from '../models/department-model';
 export class DepartmentService {
   formData: Department;
   readonly apiUrl = environment.apiUrl;
+  private listener = new Subject<any>();
   constructor(private httpClient: HttpClient) { }
 
   getDepartmentList(): Observable<Department[]> {
     return this.httpClient.get<Department[]>(`${this.apiUrl}/departments/`);
   }
 
-  addDepartment(department: Department){
+  addDepartment(department: Department) {
     return this.httpClient.post(`${this.apiUrl}/departments/`, department);
   }
+
+  listen(): Observable<any> {
+    return this.listener.asObservable();
+  }
+  filter(filterBy: string) {
+    this.listener.next(filterBy);
+  }
+
 }

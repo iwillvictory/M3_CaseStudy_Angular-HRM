@@ -14,7 +14,12 @@ export class ShowDepartComponent implements OnInit {
   listData: MatTableDataSource<any>;
   columnNames: string[] = ['Options', 'departmentId', 'departmentName'];
 
-  constructor(private departmentService: DepartmentService, private dialog: MatDialog) { }
+  constructor(private departmentService: DepartmentService, private dialog: MatDialog) {
+    this.departmentService.listen().subscribe((m: any) => {
+      console.log(m);
+      this.refreshDepList();
+    });
+  }
 
   @ViewChild(MatSort, null) sort: MatSort;  // Sorting
 
