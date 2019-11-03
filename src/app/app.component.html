@@ -1,6 +1,19 @@
-<div style="text-align: center">
-  <h1 >
-    {{title}}
-  </h1>
-  <button type="button" class="btn btn-primary">Primary</button>
+<div class="container">
+  <h3 class="d-flex justify-content-center">Employee System Manager</h3>
+  <nav class="navbar navbar-expand-sm bg-light navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <button class="m-1 btn btn-light btn-outline-primary"  label="DepScreen" (click)="DepScreen=true; EmpScreen=false;">
+          Departments
+        </button>
+      </li>
+      <li class="nav-item">
+        <button class="m-1 btn btn-light btn-outline-primary"  label="EmpScreen" (click)="DepScreen=false; EmpScreen=true;">
+          Employees
+        </button>
+      </li>
+    </ul>
+  </nav>
+  <app-employee *ngIf="EmpScreen"></app-employee>
+  <app-department *ngIf="DepScreen"></app-department>
 </div>
