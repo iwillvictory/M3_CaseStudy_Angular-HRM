@@ -8,6 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material';
+import {MatDatepickerModule} from '@angular/material';
+import {MatNativeDateModule} from '@angular/material';
+
 import { EmployeeComponent } from './employee/employee.component';
 import { DepartmentComponent } from './department/department.component';
 import { ShowEmpComponent } from './employee/show-emp/show-emp.component';
@@ -47,10 +50,11 @@ import {HttpClientModule} from '@angular/common/http';
     MatDialogModule,
     FormsModule,
     MatSnackBarModule,
-
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [DepartmentService, EmployeeService],
   bootstrap: [AppComponent],
-  entryComponents: [AddDepartComponent, EditDepartComponent]
+  entryComponents: [AddDepartComponent, EditDepartComponent, AddEmpComponent, EditEmpComponent]
 })
 export class AppModule { }

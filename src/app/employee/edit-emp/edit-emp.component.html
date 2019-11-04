@@ -1,1 +1,78 @@
-<p>edit-emp works!</p>
+<div class="d-flex justify-content-between">
+  <h4>Edit Employee</h4>
+  <button mat-button (click)="onClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div style="overflow: auto; height: 450px;">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" autocomplete="off">
+    <div class="m-3 input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Employee ID</span>
+      </div>
+      <input readonly="readonly" type="text"
+             class="form-control"
+             name="employeeId"
+             #EmployeeName="ngModel"
+             [(ngModel)]="service.formData.employeeId">
+    </div>
+
+    <div class="m-3 input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Employee Name</span>
+      </div>
+      <input required minlength="2" type="text"
+             class="form-control"
+             name="employeeName"
+             #EmployeeName="ngModel"
+             [(ngModel)]="service.formData.employeeName">
+    </div>
+    <div class="text-left text-danger" *ngIf="EmployeeName.invalid && EmployeeName.touched">
+      Please enter Employee name.
+    </div>
+
+    <div class="m-3 input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Department Name</span>
+      </div>
+      <select required
+              class="form-control"
+              name="department"
+              #EmployeeName="ngModel"
+              [(ngModel)]="service.formData.department.departmentId">
+        <option *ngFor="let dep of departList" [value]="dep.departmentId">{{dep.departmentName}}</option>
+      </select>
+
+
+    </div>
+
+    <div class="m-3 input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">E-Mail</span>
+      </div>
+      <input required minlength="2" type="text"
+             class="form-control"
+             name="mail"
+             #mail="ngModel"
+             [(ngModel)]="service.formData.mail">
+    </div>
+
+    <div class="m-3 input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Join Date</span>
+      </div>
+      <input required [matDatepicker]="picker"
+             class="form-control"
+             name="joinDate"
+             #joinDate="ngModel"
+             [(ngModel)]="service.formData.joinDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker ></mat-datepicker>
+    </div>
+
+
+    <button class="m-3" mat-raised-button color="primary" type="submit"
+            [disabled]="form.invalid">Edit Employee</button>
+  </form>
+</div>
